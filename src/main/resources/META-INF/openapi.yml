@@ -1,0 +1,638 @@
+---
+openapi: 3.0.3
+info:
+  title: cakra-jenkins-jobs-persist-service API
+  version: 1.0.0-SNAPSHOT
+paths:
+  /api/jenkins-jobs-persist-service/jenkins-job:
+    get:
+      tags:
+      - Jenkins Job Controller
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JenkinsJobDto'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+    post:
+      tags:
+      - Jenkins Job Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsJobDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+    delete:
+      tags:
+      - Jenkins Job Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsJobDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-job/find:
+    get:
+      tags:
+      - Jenkins Job Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsJobDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JenkinsJobDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-job/find-one:
+    get:
+      tags:
+      - Jenkins Job Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsJobDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JenkinsJobDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-job/find-page:
+    get:
+      tags:
+      - Jenkins Job Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageJobReq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageJobDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-job/page:
+    get:
+      tags:
+      - Jenkins Job Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageReq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageJobDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-url:
+    get:
+      tags:
+      - Jenkins Url Controller
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JenkinsUrlDto'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+    post:
+      tags:
+      - Jenkins Url Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsUrlDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SavedDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+    delete:
+      tags:
+      - Jenkins Url Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsUrlDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-url/find:
+    get:
+      tags:
+      - Jenkins Url Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsUrlDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JenkinsUrlDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-url/find-one:
+    get:
+      tags:
+      - Jenkins Url Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JenkinsUrlDto'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/JenkinsUrlDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-url/find-page:
+    get:
+      tags:
+      - Jenkins Url Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageUrlReq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageUrlDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+  /api/jenkins-jobs-persist-service/jenkins-url/page:
+    get:
+      tags:
+      - Jenkins Url Controller
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PageReq'
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PageUrlDto'
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorRes'
+components:
+  schemas:
+    ErrorRes:
+      type: object
+      properties:
+        status:
+          format: int32
+          type: integer
+        timestamp:
+          format: int64
+          type: integer
+        path:
+          type: string
+        exception:
+          type: string
+        message:
+          type: string
+    DeletedDto:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+    JenkinsJobDto:
+      type: object
+      properties:
+        id:
+          type: string
+        jobName:
+          type: string
+        jobStatus:
+          $ref: '#/components/schemas/JobStatus'
+        pushEvent:
+          type: boolean
+        groovyScript:
+          type: string
+        specificBranchEvent:
+          type: string
+        groupId:
+          format: int64
+          type: integer
+        jobHashcode:
+          format: int64
+          type: integer
+        tagEvent:
+          type: boolean
+        mraEvent:
+          type: boolean
+        groupName:
+          type: string
+        jobStage:
+          $ref: '#/components/schemas/JobStage'
+        targetBranch:
+          type: string
+        cronTrigger:
+          type: string
+        allBranchEvent:
+          type: boolean
+        selectedTrigger:
+          type: string
+        projectName:
+          type: string
+        stageHashcode:
+          format: int64
+          type: integer
+        gitUrl:
+          type: string
+        projectId:
+          format: int64
+          type: integer
+        stageLabel:
+          type: string
+    JenkinsUrlDto:
+      type: object
+      properties:
+        id:
+          type: string
+        jenkinsUname:
+          type: string
+        groupId:
+          format: int32
+          type: integer
+        jenkins:
+          type: boolean
+        jenkinsToken:
+          type: string
+        name:
+          type: string
+        jenkinsUrl:
+          type: string
+    JobStage:
+      type: object
+      properties:
+        endTimeMillis:
+          format: int64
+          type: integer
+        pauseDurationMillis:
+          format: int64
+          type: integer
+        queueDurationMillis:
+          format: int64
+          type: integer
+        startTimeMillis:
+          format: int64
+          type: integer
+        name:
+          type: string
+        stages:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stage'
+        description:
+          type: string
+        durationMillis:
+          format: int64
+          type: integer
+        id:
+          type: string
+        estimatedDuration:
+          format: int64
+          type: integer
+        status:
+          type: string
+        link:
+          $ref: '#/components/schemas/Link'
+    JobStatus:
+      type: object
+      properties:
+        color:
+          type: string
+        lastSuccessfulBuild:
+          $ref: '#/components/schemas/LastSuccessfulBuild'
+        name:
+          type: string
+        className:
+          type: string
+    LastSuccessfulBuild:
+      type: object
+      properties:
+        displayName:
+          type: string
+        className:
+          type: string
+        timestamp:
+          format: int64
+          type: integer
+    Link:
+      type: object
+      properties:
+        self:
+          $ref: '#/components/schemas/Self'
+    PageJobDto:
+      type: object
+      properties:
+        page:
+          format: int64
+          type: integer
+        pageCount:
+          format: int64
+          type: integer
+        size:
+          format: int64
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JenkinsJobDto'
+    PageJobReq:
+      required:
+      - paging
+      - where
+      type: object
+      properties:
+        paging:
+          allOf:
+          - $ref: '#/components/schemas/PageReq'
+          - nullable: false
+        where:
+          allOf:
+          - $ref: '#/components/schemas/JenkinsJobDto'
+          - nullable: false
+    PageReq:
+      required:
+      - page
+      - size
+      type: object
+      properties:
+        page:
+          format: int64
+          minimum: 1
+          type: integer
+          nullable: false
+        size:
+          format: int64
+          minimum: 1
+          type: integer
+          nullable: false
+    PageUrlDto:
+      type: object
+      properties:
+        page:
+          format: int64
+          type: integer
+        pageCount:
+          format: int64
+          type: integer
+        size:
+          format: int64
+          type: integer
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/JenkinsUrlDto'
+    PageUrlReq:
+      required:
+      - paging
+      - where
+      type: object
+      properties:
+        paging:
+          allOf:
+          - $ref: '#/components/schemas/PageReq'
+          - nullable: false
+        where:
+          allOf:
+          - $ref: '#/components/schemas/JenkinsUrlDto'
+          - nullable: false
+    SavedDto:
+      type: object
+      properties:
+        inserted:
+          type: boolean
+    Self:
+      type: object
+      properties:
+        href:
+          type: string
+    Stage:
+      type: object
+      properties:
+        pauseDurationMillis:
+          format: int64
+          type: integer
+        startTimeMillis:
+          format: int64
+          type: integer
+        execNode:
+          type: string
+        name:
+          type: string
+        durationMillis:
+          format: int64
+          type: integer
+        id:
+          type: string
+        status:
+          type: string
+        link:
+          $ref: '#/components/schemas/Link'
